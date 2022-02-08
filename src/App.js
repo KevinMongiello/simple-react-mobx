@@ -1,9 +1,18 @@
 import React from "react";
+import { observer } from "mobx-react";
 
-const App = () => ( 
-    <div>
-        <h1>Blank default project.</h1>
-    </div>
-);
+// class App extends React.Component {
+//    render() {
+//        return (
+//            <div>
+//                 <h1>{this.props.store.filter}</h1>
+//             </div>
+//        );
+//    }
+// }
+
+const App = observer(({ store }) => {
+    return <h1>{store.filter}</h1>;
+})
 
 export default App;
