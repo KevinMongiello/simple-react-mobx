@@ -1,5 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
+import styles from './App.css';
 
 // class App extends React.Component {
 //    render() {
@@ -12,7 +13,7 @@ import { observer } from "mobx-react";
 // }
 
 const App = observer(({ store }) => {
-    return <h1>{store.filter}</h1>;
+    return <h1 className={styles.blue} >{store.filter}</h1>;
 })
 
 export default App;
