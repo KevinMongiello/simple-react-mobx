@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import store from "./AppStore";
+import Todos from "./Todos";
+import store from "./TodoStore";
 
-ReactDOM.render(<App store={store} />,document.querySelector("#root"));
+ReactDOM.render(<Todos store={store} />,document.querySelector("#root"));

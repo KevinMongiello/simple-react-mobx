@@ -1,0 +1,8 @@
+.blue {
+    background: blue;
+    color: gold;
+}
+
+.complete {
+    text-decoration: line-through;
+}
