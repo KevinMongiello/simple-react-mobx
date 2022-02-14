@@ -1,6 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Todos from "./Todos";
-import store from "./TodoStore";
 
-ReactDOM.render(<Todos store={store} />,document.querySelector("#root"));
+import { BrowserRouter } from "react-router-dom";
+import App from "./App/App";
+import { AuthProvider } from "./hooks/useAuth";
+
+ReactDOM.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <AuthProvider>
+                <App />
+            </AuthProvider>
+        </BrowserRouter>
+    </React.StrictMode>,
+    document.querySelector("#root")
+);

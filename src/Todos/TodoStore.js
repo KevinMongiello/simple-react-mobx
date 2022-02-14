@@ -1,4 +1,4 @@
-import { makeAutoObservable, autorun } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { v4 as uuid } from 'uuid';
 
 class TodoStore {
@@ -12,9 +12,13 @@ class TodoStore {
     createTodo(value) {
         this.todos.push(new Todo(value));
     }
-    
+
     completeTodo (id) {
         this.todos.find(todo => todo.id === id).complete();
+    }
+
+    clearCompleted() {
+        this.todos = this.todos.filter(todo => !todo.done);
     }
 }
 
@@ -36,9 +40,3 @@ class Todo {
 const store = window.store = new TodoStore();
 
 export default store;
-
-autorun(() => {
-    console.log('abc')
-    console.log(store.filter)
-    console.log(store.todos)
-})
