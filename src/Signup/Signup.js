@@ -1,12 +1,12 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import loginStyles from '../Login/Login.css';
 
 export const Signup = () => {
     const auth = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state && location.state.from && location.state.from.pathname
 
     const onSubmit = e => {
         e.preventDefault();
@@ -16,26 +16,33 @@ export const Signup = () => {
             email: form.get('email'),
             password: form.get('password'),
         };
-        auth.login(
+        auth.signup(
             data,
-            () =>navigate(from, { replace: true })
+            (user) => user && navigate('/login', { replace: true })
         );
     }
 
     return (
         <div>
-            <form onSubmit={onSubmit}>
-                <label>
-                    Name: <input type='text' name='name' />
-                </label>
-                <label>
-                    Email: <input type='text' name='email' />
-                </label>
-                <label>
-                    Password: <input type='password' name='password' />
-                </label>
+            <form className={loginStyles.form} onSubmit={onSubmit}>
+                <div>
+                    <label>
+                        Name: <input type='text' name='name' />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Email: <input type='text' name='email' />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Password: <input type='password' name='password' />
+                    </label>
+                </div>
+                <button type='submit'>Create Account</button>
             </form>
-            <button onClick={() => navigate('/login')}>Log In</button>
+            <p>Have an account? <Link to={'/login'}>Log in</Link></p>
         </div>
     );
 }

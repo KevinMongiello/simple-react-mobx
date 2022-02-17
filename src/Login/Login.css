@@ -1,0 +1,10 @@
+.form > div > label {
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+    margin: 0.25rem 0;
+}
+
+.form button {
+    margin-top: 0.5rem;
+}
