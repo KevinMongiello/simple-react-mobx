@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 
     const signup = async (newUser, callback) => {
         try {
-            const url = 'http://localhost:3000/api/user/register';
+            const url = '/api/user/register';
             const data = { ...newUser };
             const user = (await axios({
                 url,
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (_user, callback) => {
         try {
-            const url = 'http://localhost:3000/api/user/login';
+            const url = '/api/user/login';
             const data = { ..._user };
             const jwt = (await axios({
                 url,
@@ -38,8 +38,7 @@ export const AuthProvider = ({ children }) => {
                     'Content-Type': 'application/json'
                 }
             })).data;
-            console.log('Login User: ' , user);
-            callback(user);
+            callback(jwt);
         } catch (err) {
             console.log('Login failed... ', err);
             callback(null);
