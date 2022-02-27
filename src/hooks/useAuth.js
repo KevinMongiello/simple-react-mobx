@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
                 method: 'post',
                 data,
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 }
             })).data;
             callback(jwt);
