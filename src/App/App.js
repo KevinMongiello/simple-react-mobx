@@ -21,7 +21,6 @@ export default () => {
 
     return (
         <div>
-            Hello
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />

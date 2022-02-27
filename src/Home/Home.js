@@ -5,19 +5,20 @@ import Todos from '../todos/Todos';
 import store from '../todos/TodoStore';
 
 export const Home = () => {
-    const auth = useAuth();
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
-
     return (
         <div className='home'>
             <h1>Todos App</h1>
-            {auth.user && <Todos store={store} />}
-            {!auth.user && (
+            {user && <div>Hello {user.name}</div>}
+            {user && <Todos store={store} />}
+            {!user && (
                 <div>
                     <button onClick={() => navigate('/login')}>Log in</button>
                     <button onClick={() => navigate('/signup')}>Sign Up</button>
                 </div>
             )}
+            {user && <button onClick={logout}>Log out</button>}
         </div>
     );
 }
